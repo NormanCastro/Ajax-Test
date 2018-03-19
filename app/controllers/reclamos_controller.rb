@@ -1,0 +1,2 @@
+class ReclamosController < ApplicationController
+end

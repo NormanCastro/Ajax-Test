@@ -1,0 +1,3 @@
+class Reclamo < ApplicationRecord
+
+end
