@@ -12,7 +12,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/1.json
   def show
     @reclamo = Reclamo.new
-    @reclamos = Reclamo.all
+    @reclamos = Reclamo.where(empresa_id: @empresa).order(created_at: :desc)
   end
 
   # GET /empresas/new
