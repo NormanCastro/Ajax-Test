@@ -5,4 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+Reclamo.destroy_all
+Empresa.destroy_all
+User.destroy_all
+
+
+20.times do
+	Empresa.create(name: Faker::Company.name)
+end	
+
+30.times do
+	User.create(email: Faker::Internet.email,
+			password: '123456'
+		)
+end	
+
+250.times do
+	Reclamo.create(user_id: User.order("RANDOM()").id,
+			empresa_id: Empresa.order("RANDOM()").id,
+			content: Faker::Lorem.sentences
+			)
+end	
