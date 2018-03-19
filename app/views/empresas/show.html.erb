@@ -1,13 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="text-center">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @empresa.name %>
-</p>
+	<legend><h1><%= @empresa.name %></h1></legend>
 
-<%= @reclamos each do |reclamo| %>
-	
-<% end  %>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<div class="well well-sm">
+			<legend>Reclamos:</legend>
+
+
+			<%= form_with(model: [@empresa, Reclamo.new], html: { class: 'form-horizontal' }) do |f| %>
+				<div class="form-group">
+					<div class="col-md-12">
+						<%= f.text_area :content, placeholder: 'Escribe tu reclamo aquí...', class: 'form-control' %>
+					</div>
+				</div>
+				<%= f.submit 'Comentar', class: 'btn btn-primary' %>
+			<% end %>
+			  
+		</div>
+	</div>
+	<div class="col-md-8" id="reclamos">
+		<% @reclamos.each do |reclamo| %>
+			<div class="well well-sm" id="<%= reclamo.id  %>">
+					<%= reclamo.user.email %>
+				<br>
+				<div id="contenido<%= reclamo.id%>">
+					<%= reclamo.content %>
+				</div>
+				<div class="text-right">
+				<!-- Button trigger modal -->
+					<%= link_to 'Editar', edit_empresa_reclamo_path(@empresa,reclamo), data: {remote: true}, class: 'btn btn-xs btn-success' %>
+					<%= link_to 'Eliminar', empresa_reclamo_path(@empresa,reclamo), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true}, class: 'btn btn-xs btn-danger' %>
+
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
 
 <%= link_to 'Edit', edit_empresa_path(@empresa) %> |
 <%= link_to 'Back', empresas_path %>

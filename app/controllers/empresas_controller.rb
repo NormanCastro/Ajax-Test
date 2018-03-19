@@ -1,6 +1,6 @@
 class EmpresasController < ApplicationController
   before_action :set_empresa, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!, only: [:index, :show]
   # GET /empresas
   # GET /empresas.json
   def index
@@ -11,6 +11,7 @@ class EmpresasController < ApplicationController
   # GET /empresas/1
   # GET /empresas/1.json
   def show
+    @reclamo = Reclamo.new
     @reclamos = Reclamo.all
   end
 
@@ -32,8 +33,7 @@ class EmpresasController < ApplicationController
       if @empresa.save
         format.js
       else
-        format.html { render :new }
-        format.json { render json: @empresa.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

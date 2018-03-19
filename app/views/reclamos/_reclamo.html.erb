@@ -1,0 +1,14 @@
+<div class="well well-sm" id="<%= @reclamo.id  %>">
+	<strong><%= @reclamo.user.email %>:</strong>
+	<br>
+
+	<div id="contenido<%= @reclamo.id%>">
+			<%= @reclamo.content %>
+
+	</div>
+
+	<div class="text-right">
+		<%= link_to 'Editar', edit_empresa_reclamo_path(@empresa,@reclamo), data: {remote: true}, class: 'btn btn-xs btn-success' %>
+		<%= link_to 'Eliminar', empresa_reclamo_path(@empresa,@reclamo), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true }, class: 'btn btn-xs btn-danger' %>
+	</div>
+</div>

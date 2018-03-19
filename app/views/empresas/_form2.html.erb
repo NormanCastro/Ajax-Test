@@ -1,7 +1,7 @@
 <tr id="<%= @empresa.id %>">
         <td id="cambiar<%= @empresa.id %>"><%= @empresa.name%></td>
-        <td><%= link_to 'Show', @empresa, class: "btn-sm btn-info" %></td> 
-        <td><%= link_to 'Edit', edit_empresa_path(@empresa), data: {remote: true}, class: "btn-sm btn-success" %></td>
-        <td><%= link_to 'Destroy', @empresa, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "btn-sm btn-danger" %></td>
+        <td><%= link_to 'Detalle', @empresa, class: "btn-sm btn-info" %></td> 
+        <td><%= link_to 'Editar', edit_empresa_path(@empresa), data: {remote: true}, class: "btn-sm btn-success" %></td>
+        <td><%= link_to 'Eliminar', @empresa, method: :delete, data: { confirm: 'Are you sure?', remote: true }, class: "btn-sm btn-danger" %></td>
       </tr>
 
